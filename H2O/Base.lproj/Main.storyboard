@@ -87,7 +87,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="W3o-Bh-C0J"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                         <connections>
                                                             <action selector="drink100MlButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TFO-On-bQ1"/>
                                                         </connections>
@@ -110,7 +110,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="83s-Pi-hHX"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                         <connections>
                                                             <action selector="drink200MlButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3tS-nf-hPE"/>
                                                         </connections>
@@ -133,7 +133,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="XIt-OU-oSq"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                         <connections>
                                                             <action selector="drink300MlButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="S1f-BF-UAq"/>
                                                         </connections>
@@ -156,7 +156,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="U4H-SU-P9z"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                         <connections>
                                                             <action selector="customeVolumeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="fpU-Vp-COX"/>
                                                         </connections>
@@ -179,7 +179,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="BNY-sE-DDs"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                         <connections>
                                                             <action selector="undoLastButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="7DR-Jl-35w"/>
                                                         </connections>
@@ -202,7 +202,7 @@
                                                             <constraint firstAttribute="height" constant="50" id="K38-PB-FAr"/>
                                                         </constraints>
                                                         <state key="normal" title="Button"/>
-                                                        <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
                                                         <connections>
                                                             <action selector="resetAllDayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="xpS-FL-p0G"/>
                                                         </connections>

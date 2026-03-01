@@ -8,58 +8,76 @@
 import UIKit
 
 class HomeVC: UIViewController {
+    
+    private var currentVolume = 0
+    private var goalVolume = 2000
 
     @IBOutlet weak var progressLabel: UILabel!
     
     @IBOutlet weak var drink100MlOutlet: UIButton!
-    
     @IBOutlet weak var drink200MlOutlet: UIButton!
-    
     @IBOutlet weak var drink300MlOutlet: UIButton!
-    
     @IBOutlet weak var customeVolumeOutlet: UIButton!
-    
     @IBOutlet weak var undoLastOutlet: UIButton!
-    
     @IBOutlet weak var resetAllDayOutlet: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        fillHomeVC()
+        setupNavigation()
+        setupProgressLabel()
+        setupButtons()
     }
     
-    private func fillHomeVC() {
-        // MARK: Fill progress label
-        self.progressLabel.text = "Progress: 0 / 2000ml (0%)"
-        self.progressLabel.font = .systemFont(ofSize: CGFloat(23))
-        self.progressLabel.textColor = .appPrimary
-        
-        // MARK: Fill navigation
-        navigationItem.title = "H₂O"
-        navigationController?.title = "H₂O"
+    // MARK: Setup navigation
+    private func setupNavigation() {
+        navigationItem.title = "H2O"
+        navigationController?.title = "H2O"
         navigationController?.navigationBar.prefersLargeTitles = true
-        
-        // MARK: Fill button labels
-        self.drink100MlOutlet.setTitle("Drink 100ml", for: .normal)
-        self.drink200MlOutlet.setTitle("Drink 200ml", for: .normal)
-        self.drink300MlOutlet.setTitle("Drink 300ml", for: .normal)
-        self.customeVolumeOutlet.setTitle("Custome volume", for: .normal)
-        self.undoLastOutlet.setTitle("Undo last add", for: .normal)
-        self.resetAllDayOutlet.setTitle("Reset all day", for: .normal)
     }
     
+    // MARK: Setup progress label
+    private func setupProgressLabel() {
+        updateProgressLabel()
+        self.progressLabel.font = .systemFont(ofSize: CGFloat(23), weight: .bold)
+        self.progressLabel.textColor = .appPrimary
+    }
     
+    // MARK: Setup buttons
+    private func setupButtons() {
+        setup(button: self.drink100MlOutlet, title: "Drink 100ml", state: .normal, color: .appPrimary, borderWidth: 1)
+        setup(button: self.drink200MlOutlet, title: "Drink 200ml", state: .normal, color: .appPrimary, borderWidth: 1)
+        setup(button: self.drink300MlOutlet, title: "Drink 300ml", state: .normal, color: .appPrimary, borderWidth: 1)
+        setup(button: self.customeVolumeOutlet, title: "Custome volume", state: .normal, color: .appPrimary, borderWidth: 1)
+        setup(button: self.undoLastOutlet, title: "Undo last add", state: .normal, color: .appPrimary, borderWidth: 1)
+        setup(button: self.resetAllDayOutlet, title: "Reset all day", state: .normal, color: .appPrimary, borderWidth: 1)
+    }
+    
+    // MARK: Update progress label
+    private func updateProgressLabel() {
+        let percent = (Double(currentVolume) / Double(goalVolume)) * 100
+        progressLabel.text = "Progress: \(currentVolume) / \(goalVolume)ml (\(Int(percent))%)"
+    }
+    
+    private func setup(button: UIButton, title: String, state: UIControl.State, color: UIColor, borderWidth: CGFloat) {
+        button.setTitle(title, for: state)
+        button.setTitleColor(color, for: state)
+        button.layer.borderWidth = borderWidth
+        button.layer.borderColor = UIColor.appPrimary.cgColor
+    }
+ 
     @IBAction func drink100MlButton(_ sender: UIButton) {
-        print(#function)
+        currentVolume += 100
+        updateProgressLabel()
     }
     
     @IBAction func drink200MlButton(_ sender: UIButton) {
-        print(#function)
+        currentVolume += 200
+        updateProgressLabel()
     }
     
     @IBAction func drink300MlButton(_ sender: UIButton) {
-        print(#function)
+        currentVolume += 300
+        updateProgressLabel()
     }
     
     @IBAction func customeVolumeButton(_ sender: UIButton) {
@@ -71,7 +89,8 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func resetAllDayButton(_ sender: UIButton) {
-        print(#function)
+        currentVolume = 0
+        updateProgressLabel()
     }
     
 }
