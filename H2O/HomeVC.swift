@@ -40,17 +40,17 @@ class HomeVC: UIViewController {
     private func setupProgressLabel() {
         updateProgressLabel()
         self.progressLabel.font = .systemFont(ofSize: CGFloat(23), weight: .bold)
-        self.progressLabel.textColor = .appPrimary
+        self.progressLabel.textColor = .bluePrimary
     }
     
     // MARK: Setup buttons
     private func setupButtons() {
-        setup(button: self.drink100MlOutlet, title: "Drink 100ml", state: .normal, color: .appPrimary, borderWidth: 1)
-        setup(button: self.drink200MlOutlet, title: "Drink 200ml", state: .normal, color: .appPrimary, borderWidth: 1)
-        setup(button: self.drink300MlOutlet, title: "Drink 300ml", state: .normal, color: .appPrimary, borderWidth: 1)
-        setup(button: self.customeVolumeOutlet, title: "Custome volume", state: .normal, color: .appPrimary, borderWidth: 1)
-        setup(button: self.undoLastOutlet, title: "Undo last add", state: .normal, color: .appPrimary, borderWidth: 1)
-        setup(button: self.resetAllDayOutlet, title: "Reset all day", state: .normal, color: .appPrimary, borderWidth: 1)
+        setup(button: self.drink100MlOutlet, title: "Drink 100ml", color: .bluePrimary)
+        setup(button: self.drink200MlOutlet, title: "Drink 200ml", color: .bluePrimary)
+        setup(button: self.drink300MlOutlet, title: "Drink 300ml", color: .bluePrimary)
+        setup(button: self.customeVolumeOutlet, title: "Custome volume", color: .bluePrimary)
+        setup(button: self.undoLastOutlet, title: "Undo last add", color: .redPrimary)
+        setup(button: self.resetAllDayOutlet, title: "Reset all day", color: .redPrimary)
     }
     
     // MARK: Update progress label
@@ -59,11 +59,11 @@ class HomeVC: UIViewController {
         progressLabel.text = "Progress: \(currentVolume) / \(goalVolume)ml (\(Int(percent))%)"
     }
     
-    private func setup(button: UIButton, title: String, state: UIControl.State, color: UIColor, borderWidth: CGFloat) {
-        button.setTitle(title, for: state)
-        button.setTitleColor(color, for: state)
-        button.layer.borderWidth = borderWidth
-        button.layer.borderColor = UIColor.appPrimary.cgColor
+    private func setup(button: UIButton, title: String, color: UIColor) {
+        button.setTitle(title, for: .normal)
+        button.setTitleColor(color, for: .normal)
+        button.layer.borderWidth = 1.5
+        button.layer.borderColor = color.cgColor
     }
  
     @IBAction func drink100MlButton(_ sender: UIButton) {
