@@ -11,6 +11,7 @@ class HomeVC: UIViewController {
     
     private var currentVolume = 0
     private var goalVolume = 2000
+    private var lastAdd = 0
 
     @IBOutlet weak var progressLabel: UILabel!
     
@@ -66,17 +67,20 @@ class HomeVC: UIViewController {
     }
  
     @IBAction func drink100MlButton(_ sender: UIButton) {
-        currentVolume += 100
+        lastAdd = 100
+        currentVolume += lastAdd
         updateProgressLabel()
     }
     
     @IBAction func drink200MlButton(_ sender: UIButton) {
-        currentVolume += 200
+        lastAdd = 200
+        currentVolume += lastAdd
         updateProgressLabel()
     }
     
     @IBAction func drink300MlButton(_ sender: UIButton) {
-        currentVolume += 300
+        lastAdd = 300
+        currentVolume += lastAdd
         updateProgressLabel()
     }
     
@@ -85,7 +89,14 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func undoLastButton(_ sender: UIButton) {
-        print(#function)
+        guard currentVolume >= lastAdd else {
+            currentVolume = 0
+            updateProgressLabel()
+            return
+        }
+        currentVolume -= lastAdd
+        updateProgressLabel()
+        lastAdd = 0
     }
     
     @IBAction func resetAllDayButton(_ sender: UIButton) {
