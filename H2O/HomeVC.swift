@@ -44,12 +44,12 @@ class HomeVC: UIViewController {
     
     // MARK: Setup buttons
     private func setupButtons() {
-        setup(button: self.drink100MlOutlet, title: "Drink 100ml")
-        setup(button: self.drink200MlOutlet, title: "Drink 200ml")
-        setup(button: self.drink300MlOutlet, title: "Drink 300ml")
-        setup(button: self.customeVolumeOutlet, title: "Custome volume")
-        setup(button: self.undoLastOutlet, title: "Undo last add")
-        setup(button: self.resetAllDayOutlet, title: "Reset all day")
+        setup(button: self.drink100MlOutlet, title: "Drink 100ml", normalColor: .white, highlightedColor: .gray)
+        setup(button: self.drink200MlOutlet, title: "Drink 200ml", normalColor: .white, highlightedColor: .gray)
+        setup(button: self.drink300MlOutlet, title: "Drink 300ml", normalColor: .white, highlightedColor: .gray)
+        setup(button: self.customeVolumeOutlet, title: "Custome volume", normalColor: .white, highlightedColor: .gray)
+        setup(button: self.undoLastOutlet, title: "Undo last add", normalColor: .systemPink, highlightedColor: .gray)
+        setup(button: self.resetAllDayOutlet, title: "Reset all day", normalColor: .systemPink, highlightedColor: .gray)
     }
     
     // MARK: Update progress label
@@ -58,12 +58,12 @@ class HomeVC: UIViewController {
         progressLabel.text = "Progress: \(currentVolume) / \(goalVolume)ml (\(Int(percent))%)"
     }
     
-    private func setup(button: UIButton, title: String) {
+    private func setup(button: UIButton, title: String, normalColor: UIColor, highlightedColor: UIColor) {
         button.setTitle(title, for: .normal)
-        button.setTitleColor(.white, for: .normal)
-        button.setTitleColor(.systemGray, for: .highlighted)
+        button.setTitleColor(normalColor, for: .normal)
+        button.setTitleColor(highlightedColor, for: .highlighted)
         button.layer.borderWidth = 1.5
-        button.layer.borderColor = UIColor.white.cgColor
+        button.layer.borderColor = normalColor.cgColor
     }
  
     @IBAction func drink100MlButton(_ sender: UIButton) {
