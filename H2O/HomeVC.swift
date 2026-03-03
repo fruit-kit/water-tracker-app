@@ -11,16 +11,23 @@ class HomeVC: UIViewController {
     
     private var currentVolume: Int {
         get {
-            UserDefaults.standard.integer(forKey: "currentVolume")
+            UserDefaults.standard.integer(forKey: UserDefaultsKeys.currentVolume.rawValue)
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: "currentVolume")
+            UserDefaults.standard.set(newValue, forKey: UserDefaultsKeys.currentVolume.rawValue)
         }
     }
     private var goal: Int {
-        return UserDefaults.standard.integer(forKey: "goal")
+        return UserDefaults.standard.integer(forKey: UserDefaultsKeys.goal.rawValue)
     }
-    private var lastAdd = 0
+    private var lastAdd: Int {
+        get {
+            UserDefaults.standard.integer(forKey: UserDefaultsKeys.lastAdd.rawValue)
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: UserDefaultsKeys.lastAdd.rawValue)
+        }
+    }
 
     @IBOutlet weak var progressLabel: UILabel!
     @IBOutlet weak var drink100MlOutlet: UIButton!
@@ -62,7 +69,7 @@ class HomeVC: UIViewController {
         self.resetAllDayOutlet.applyStyle(title: "Reset all day", normalColor: .systemPink, highlightedColor: .gray)
     }
     
-    private func addWatter(_ amount: Int) {
+    private func addWater(_ amount: Int) {
         lastAdd = amount
         currentVolume += lastAdd
         updateProgressLabel()
@@ -74,15 +81,15 @@ class HomeVC: UIViewController {
     }
  
     @IBAction func drink100MlButton(_ sender: UIButton) {
-        addWatter(100)
+        addWater(100)
     }
     
     @IBAction func drink200MlButton(_ sender: UIButton) {
-        addWatter(200)
+        addWater(200)
     }
     
     @IBAction func drink300MlButton(_ sender: UIButton) {
-        addWatter(300)
+        addWater(300)
     }
     
     @IBAction func customeVolumeButton(_ sender: UIButton) {

@@ -12,10 +12,10 @@ class GoalVC: UIViewController {
     private var defaultGoal = 2_000
     
     var goal: Int {
-        let goal = UserDefaults.standard.integer(forKey: "goal")
+        let goal = UserDefaults.standard.integer(forKey: UserDefaultsKeys.goal.rawValue)
         guard goal > 0 else {
             UserDefaults.standard.set(defaultGoal, forKey: "goal")
-            return UserDefaults.standard.integer(forKey: "goal")
+            return UserDefaults.standard.integer(forKey: UserDefaultsKeys.goal.rawValue)
         }
         return goal
     }
