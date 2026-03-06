@@ -6,7 +6,7 @@
 //
 import Foundation
 
-struct DrinkEntry {
+struct DrinkEntry: Codable {
     let date: Date
     let volume: Int
     let type: DrinkType

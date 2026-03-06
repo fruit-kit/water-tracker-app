@@ -42,13 +42,28 @@ class WaterManager {
         lastAdd = amount
         currentVolume += lastAdd
     
-        self.drinkEntrys.append(DrinkEntry(date: Date(), volume: lastAdd, type: .water))
+        self.drinkEntrys.insert(DrinkEntry(date: Date(), volume: lastAdd, type: .water), at: 0)
+        
+        saveHistory()
+    }
+    
+    func saveHistory() {
+        let data = try? JSONEncoder().encode(self.drinkEntrys)
+        UserDefaults.standard.set(data, forKey: "drinkEntrys")
+    }
+    
+    func loadHistory() {
+        if let data = UserDefaults.standard.data(forKey: "drinkEntrys"),
+           let decodedData = try? JSONDecoder().decode([DrinkEntry].self, from: data) {
+            self.drinkEntrys = decodedData
+        }
     }
     
     func resetDay() {
         self.currentVolume = 0
         self.lastAdd = 0
         self.drinkEntrys.removeAll()
+        self.saveHistory()
     }
     
     func undoLast() {
@@ -59,12 +74,16 @@ class WaterManager {
         }
         self.currentVolume -= self.lastAdd
         self.lastAdd = 0
+        if !drinkEntrys.isEmpty {
+            self.drinkEntrys.remove(at: 0)
+        }
+        self.saveHistory()
     }
     
     func checkDate() {
         let lastOpenDate = UserDefaults.standard.object(forKey: UserDefaultsKeys.lastOpenDate.rawValue) as? Date ?? Date()
         guard Calendar.current.isDateInToday(lastOpenDate) else {
-            WaterManager.shared.currentVolume = 0
+            self.currentVolume = 0
             UserDefaults.standard.set(Date(), forKey: UserDefaultsKeys.lastOpenDate.rawValue)
             return
         }

@@ -23,6 +23,7 @@ class HistoryVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        WaterManager.shared.loadHistory()
         historyTableView.reloadData()
     }
  
