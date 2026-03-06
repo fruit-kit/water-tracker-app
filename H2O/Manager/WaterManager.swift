@@ -43,8 +43,6 @@ class WaterManager {
         currentVolume += lastAdd
     
         self.drinkEntrys.append(DrinkEntry(date: Date(), volume: lastAdd, type: .water))
-        
-        print(drinkEntrys)
     }
     
     func resetDay() {

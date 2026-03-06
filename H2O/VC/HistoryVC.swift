@@ -45,9 +45,15 @@ extension HistoryVC: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableViewCell") as? HistoryTableViewCell else {
             return UITableViewCell()
         }
-        cell.dateLabel.text = "Date: \(WaterManager.shared.drinkEntrys[indexPath.row].date)"
-        cell.timeLabel.text = "Time: \(WaterManager.shared.drinkEntrys[indexPath.row].date)"
-        cell.volumeLable.text = "Volume: \(WaterManager.shared.drinkEntrys[indexPath.row].volume)"
+        
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let timeFormatter = DateFormatter()
+        timeFormatter.dateFormat = "HH:mm"
+        
+        cell.dateLabel.text = "Date: \(dateFormatter.string(from:WaterManager.shared.drinkEntrys[indexPath.row].date))"
+        cell.timeLabel.text = "Time: \(timeFormatter.string(from:WaterManager.shared.drinkEntrys[indexPath.row].date))"
+        cell.volumeLable.text = "Volume: \(WaterManager.shared.drinkEntrys[indexPath.row].volume)ml"
         cell.typeLabel.text = "Type: \(WaterManager.shared.drinkEntrys[indexPath.row].type)"
         return cell
     }
