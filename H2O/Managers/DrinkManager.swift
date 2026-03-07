@@ -49,11 +49,11 @@ class DrinkManager {
     
     func saveHistory() {
         let data = try? JSONEncoder().encode(self.drinkEntrys)
-        UserDefaults.standard.set(data, forKey: "drinkEntrys")
+        UserDefaults.standard.set(data, forKey: UserDefaultsKeys.drinkEntrys.rawValue)
     }
     
     func loadHistory() {
-        if let data = UserDefaults.standard.data(forKey: "drinkEntrys"),
+        if let data = UserDefaults.standard.data(forKey: UserDefaultsKeys.drinkEntrys.rawValue),
            let decodedData = try? JSONDecoder().decode([DrinkEntry].self, from: data) {
             self.drinkEntrys = decodedData
         }

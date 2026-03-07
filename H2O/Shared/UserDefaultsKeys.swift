@@ -10,4 +10,5 @@ enum UserDefaultsKeys: String {
     case goal
     case lastAdd
     case lastOpenDate
+    case drinkEntrys
 }
