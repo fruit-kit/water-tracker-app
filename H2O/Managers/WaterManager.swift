@@ -1,5 +1,5 @@
 //
-//  WaterManager.swift
+//  DrinkManager.swift
 //  H2O
 //
 //  Created by Robert Kotrutsa on 05.03.26.
@@ -7,8 +7,8 @@
 
 import Foundation
 
-class WaterManager {
-    static let shared = WaterManager()
+class DrinkManager {
+    static let shared = DrinkManager()
     private init() { }
     
     var drinkEntrys = [DrinkEntry]()
@@ -38,7 +38,7 @@ class WaterManager {
         }
     }
     
-    func addWater(_ amount: Int) {
+    func addDrink(_ amount: Int) {
         lastAdd = amount
         currentVolume += lastAdd
     
@@ -62,6 +62,7 @@ class WaterManager {
     func resetDay() {
         self.currentVolume = 0
         self.lastAdd = 0
+        // FIXME: Reset only the current day
         self.drinkEntrys.removeAll()
         self.saveHistory()
     }

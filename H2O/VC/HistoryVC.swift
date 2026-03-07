@@ -23,7 +23,7 @@ class HistoryVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        WaterManager.shared.loadHistory()
+        DrinkManager.shared.loadHistory()
         historyTableView.reloadData()
     }
  
@@ -40,7 +40,7 @@ extension HistoryVC: UITableViewDelegate { }
 extension HistoryVC: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int { 1 }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        WaterManager.shared.drinkEntrys.count
+        DrinkManager.shared.drinkEntrys.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "HistoryTableViewCell") as? HistoryTableViewCell else {
@@ -52,10 +52,10 @@ extension HistoryVC: UITableViewDataSource {
         let timeFormatter = DateFormatter()
         timeFormatter.dateFormat = "HH:mm"
         
-        cell.dateLabel.text = "Date: \(dateFormatter.string(from:WaterManager.shared.drinkEntrys[indexPath.row].date))"
-        cell.timeLabel.text = "Time: \(timeFormatter.string(from:WaterManager.shared.drinkEntrys[indexPath.row].date))"
-        cell.volumeLable.text = "Volume: \(WaterManager.shared.drinkEntrys[indexPath.row].volume)ml"
-        cell.typeLabel.text = "Type: \(WaterManager.shared.drinkEntrys[indexPath.row].type)"
+        cell.dateLabel.text = "Date: \(dateFormatter.string(from:DrinkManager.shared.drinkEntrys[indexPath.row].date))"
+        cell.timeLabel.text = "Time: \(timeFormatter.string(from:DrinkManager.shared.drinkEntrys[indexPath.row].date))"
+        cell.volumeLable.text = "Volume: \(DrinkManager.shared.drinkEntrys[indexPath.row].volume)ml"
+        cell.typeLabel.text = "Type: \(DrinkManager.shared.drinkEntrys[indexPath.row].type)"
         return cell
     }
     

@@ -25,7 +25,7 @@ class HomeVC: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        WaterManager.shared.checkDate()
+        DrinkManager.shared.checkDate()
         updateProgressLabel()
     }
     
@@ -49,22 +49,22 @@ class HomeVC: UIViewController {
     }
     
     private func updateProgressLabel() {
-        let percent = (Double(WaterManager.shared.currentVolume) / Double(WaterManager.shared.currentGoal)) * 100
-        progressLabel.text = "Progress: \(WaterManager.shared.currentVolume) / \(WaterManager.shared.currentGoal)ml (\(Int(percent))%)"
+        let percent = (Double(DrinkManager.shared.currentVolume) / Double(DrinkManager.shared.currentGoal)) * 100
+        progressLabel.text = "Progress: \(DrinkManager.shared.currentVolume) / \(DrinkManager.shared.currentGoal)ml (\(Int(percent))%)"
     }
  
     @IBAction func drink100MlButton(_ sender: UIButton) {
-        WaterManager.shared.addWater(100)
+        DrinkManager.shared.addDrink(100)
         updateProgressLabel()
     }
     
     @IBAction func drink200MlButton(_ sender: UIButton) {
-        WaterManager.shared.addWater(200)
+        DrinkManager.shared.addDrink(200)
         updateProgressLabel()
     }
     
     @IBAction func drink300MlButton(_ sender: UIButton) {
-        WaterManager.shared.addWater(300)
+        DrinkManager.shared.addDrink(300)
         updateProgressLabel()
     }
     
@@ -74,7 +74,7 @@ class HomeVC: UIViewController {
             let customeVolume = alertController.textFields?.first?.text ?? ""
             if let customeVolume = Int(customeVolume),
                customeVolume > 0 {
-                WaterManager.shared.addWater(customeVolume)
+                DrinkManager.shared.addDrink(customeVolume)
                 self.updateProgressLabel()
             }
         }
@@ -89,12 +89,12 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func undoLastButton(_ sender: UIButton) {
-        WaterManager.shared.undoLast()
+        DrinkManager.shared.undoLast()
         updateProgressLabel()
     }
     
     @IBAction func resetAllDayButton(_ sender: UIButton) {
-        WaterManager.shared.resetDay()
+        DrinkManager.shared.resetDay()
         updateProgressLabel()
     }
     

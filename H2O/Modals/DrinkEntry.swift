@@ -1,5 +1,5 @@
 //
-//  WaterModel.swift
+//  DrinkEntry.swift
 //  H2O
 //
 //  Created by Robert Kotrutsa on 05.03.26.

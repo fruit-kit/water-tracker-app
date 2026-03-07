@@ -18,7 +18,7 @@ class GoalVC: UIViewController {
     }
     
     private func fillGoalVC() {
-        self.goalLabel.text = "Current goal is \(WaterManager.shared.currentGoal)ml"
+        self.goalLabel.text = "Current goal is \(DrinkManager.shared.currentGoal)ml"
         self.goalLabel.font = .systemFont(ofSize: CGFloat(23), weight: .bold)
         
         navigationItem.title = "Goal"
@@ -36,10 +36,10 @@ class GoalVC: UIViewController {
             if let customeGoal = Int(customeGoal),
                customeGoal > 0 {
                 UserDefaults.standard.set(customeGoal, forKey: UserDefaultsKeys.goal.rawValue)
-                self.goalLabel.text = "Current goal is \(WaterManager.shared.currentGoal)ml"
+                self.goalLabel.text = "Current goal is \(DrinkManager.shared.currentGoal)ml"
             } else {
-                UserDefaults.standard.set(WaterManager.shared.defaultGoal, forKey: UserDefaultsKeys.goal.rawValue)
-                self.goalLabel.text = "Current goal is \(WaterManager.shared.currentGoal)ml"
+                UserDefaults.standard.set(DrinkManager.shared.defaultGoal, forKey: UserDefaultsKeys.goal.rawValue)
+                self.goalLabel.text = "Current goal is \(DrinkManager.shared.currentGoal)ml"
             }
         }
         let cancelButton = UIAlertAction(title: "cancel", style: .cancel)
@@ -53,7 +53,7 @@ class GoalVC: UIViewController {
     }
     
     @IBAction func resetToDefaultButton(_ sender: UIButton) {
-        UserDefaults.standard.set(WaterManager.shared.defaultGoal, forKey: UserDefaultsKeys.goal.rawValue)
+        UserDefaults.standard.set(DrinkManager.shared.defaultGoal, forKey: UserDefaultsKeys.goal.rawValue)
         self.goalLabel.text = "Current goal is \(UserDefaults.standard.integer(forKey: UserDefaultsKeys.goal.rawValue))ml"
     }
     
