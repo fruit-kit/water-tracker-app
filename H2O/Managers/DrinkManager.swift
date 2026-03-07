@@ -62,8 +62,9 @@ class DrinkManager {
     func resetDay() {
         self.currentVolume = 0
         self.lastAdd = 0
-        // FIXME: Reset only the current day
-        self.drinkEntrys.removeAll()
+        drinkEntrys.removeAll {
+            Calendar.current.isDateInToday($0.date)
+        }
         self.saveHistory()
     }
     
