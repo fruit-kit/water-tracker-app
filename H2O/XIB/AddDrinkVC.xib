@@ -4,13 +4,13 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddDrinkVC" customModule="H2O" customModuleProvider="target">
             <connections>
                 <outlet property="addDrinkEntryOutlet" destination="Oen-Vv-4kL" id="1tK-l5-Z5Y"/>
+                <outlet property="cancelDrinkEntryOutlet" destination="wgL-yV-Hww" id="oto-ao-JX3"/>
                 <outlet property="textFieldOutlet" destination="LyD-jA-pIb" id="Hyc-eG-Nik"/>
                 <outlet property="titleLabel" destination="J7u-Et-5Pn" id="bvK-uP-UZt"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -22,7 +22,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="P5o-au-Clq">
-                    <rect key="frame" x="0.0" y="118" width="393" height="260"/>
+                    <rect key="frame" x="0.0" y="118" width="393" height="326"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vlf-kW-0lw">
                             <rect key="frame" x="0.0" y="0.0" width="393" height="128"/>
@@ -87,11 +87,34 @@
                                 <constraint firstAttribute="bottom" secondItem="Oen-Vv-4kL" secondAttribute="bottom" constant="8" id="Xbq-Aw-SQi"/>
                             </constraints>
                         </view>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h3w-Sv-bk5">
+                            <rect key="frame" x="0.0" y="260" width="393" height="66"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgL-yV-Hww">
+                                    <rect key="frame" x="16" y="8" width="361" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="RGY-qO-sy0"/>
+                                    </constraints>
+                                    <state key="normal" title="Button"/>
+                                    <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                    <connections>
+                                        <action selector="cancelDrinkEntryAction:" destination="-1" eventType="touchUpInside" id="ykr-l9-uPH"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="wgL-yV-Hww" secondAttribute="trailing" constant="16" id="69P-O8-DRK"/>
+                                <constraint firstItem="wgL-yV-Hww" firstAttribute="top" secondItem="h3w-Sv-bk5" secondAttribute="top" constant="8" id="K17-wx-afx"/>
+                                <constraint firstItem="wgL-yV-Hww" firstAttribute="leading" secondItem="h3w-Sv-bk5" secondAttribute="leading" constant="16" id="YQb-g7-Tah"/>
+                                <constraint firstAttribute="bottom" secondItem="wgL-yV-Hww" secondAttribute="bottom" constant="8" id="zfB-Gv-7N7"/>
+                            </constraints>
+                        </view>
                     </subviews>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
                 <constraint firstItem="P5o-au-Clq" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="2ec-Tn-gQK"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="P5o-au-Clq" secondAttribute="trailing" id="2m8-Wx-Abs"/>
@@ -100,9 +123,4 @@
             <point key="canvasLocation" x="7" y="99"/>
         </view>
     </objects>
-    <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-    </resources>
 </document>

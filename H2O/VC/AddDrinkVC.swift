@@ -11,6 +11,7 @@ class AddDrinkVC: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textFieldOutlet: UITextField!
     @IBOutlet weak var addDrinkEntryOutlet: UIButton!
+    @IBOutlet weak var cancelDrinkEntryOutlet: UIButton!
     
     weak var delegate: AddDrinkDelegate?
     var presentVolume: Int?
@@ -20,6 +21,7 @@ class AddDrinkVC: UIViewController {
         setupTitle()
         setupTextField()
         self.addDrinkEntryOutlet.applyStyle(title: "Add", normalColor: .white, highlightedColor: .gray)
+        self.cancelDrinkEntryOutlet.applyStyle(title: "Cancel", normalColor: .systemPink, highlightedColor: .gray)
     }
     
     private func setupTitle() {
@@ -48,6 +50,10 @@ class AddDrinkVC: UIViewController {
         }
         DrinkManager.shared.addDrink(ml)
         delegate?.didAddDrink()
+        self.dismiss(animated: true)
+    }
+    
+    @IBAction func cancelDrinkEntryAction(_ sender: UIButton) {
         self.dismiss(animated: true)
     }
     
