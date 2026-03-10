@@ -98,4 +98,19 @@ class DrinkManager {
         }
         UserDefaults.standard.set(Date(), forKey: UserDefaultsKeys.lastOpenDate.rawValue)
     }
+    
+    func deleteDrinkEntry(at index: Int) {
+        guard drinkEntrys.indices.contains(index) else {
+            return
+        }
+        let removedEntry = drinkEntrys.remove(at: index)
+        if Calendar.current.isDateInToday(removedEntry.date) {
+            currentVolume -= removedEntry.volume
+        }
+        if index == 0 {
+            lastAdd = 0
+        }
+        saveHistory()
+    }
+    
 }

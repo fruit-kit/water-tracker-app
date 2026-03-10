@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HomeVC: UIViewController, AddDrinkDelegate {
+class HomeVC: UIViewController {
     
     // MARK: - Outlets
     
@@ -35,10 +35,6 @@ class HomeVC: UIViewController, AddDrinkDelegate {
     }
     
     // MARK: - Methods
-    
-    func didAddDrink() {
-        updateProgressLabel()
-    }
     
     private func setupNavigation() {
         navigationItem.title = "H2O"
@@ -112,6 +108,14 @@ class HomeVC: UIViewController, AddDrinkDelegate {
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertConfirmation(title: "Reset all day?", message: "This action will remove all entries for today and cannot be undone.", actions: [resetAction, cancelAction])
+    }
+    
+}
+
+extension HomeVC: AddDrinkDelegate {
+    
+    func didAddDrink() {
+        updateProgressLabel()
     }
     
 }
