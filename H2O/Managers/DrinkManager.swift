@@ -41,7 +41,7 @@ class DrinkManager {
     func addDrink(amount: Int, drink: DrinkType) {
         lastAdd = amount
         currentVolume += lastAdd
-    
+        
         self.drinkEntrys.insert(DrinkEntry(date: Date(), volume: lastAdd, type: drink), at: 0)
         
         saveHistory()
@@ -76,17 +76,14 @@ class DrinkManager {
     }
     
     func undoLast() {
-        guard self.currentVolume >= self.lastAdd else {
-            self.currentVolume = 0
-            self.lastAdd = 0
+        guard !(lastAdd == 0),
+        !drinkEntrys.isEmpty else {
             return
         }
-        self.currentVolume -= self.lastAdd
-        self.lastAdd = 0
-        if !drinkEntrys.isEmpty {
-            self.drinkEntrys.remove(at: 0)
-        }
-        self.saveHistory()
+        drinkEntrys.remove(at: 0)
+        currentVolume -= lastAdd
+        lastAdd = 0
+        saveHistory()
     }
     
     func checkDate() {
