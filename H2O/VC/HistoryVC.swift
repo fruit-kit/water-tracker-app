@@ -61,7 +61,10 @@ extension HistoryVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editContextualAction = UIContextualAction(style: .normal, title: "Edit") { _ , _, completion in
+            let index = indexPath.row
             let addDrinkVC = AddDrinkVC(nibName: "AddDrinkVC", bundle: Bundle.main)
+            addDrinkVC.presentVolume = DrinkManager.shared.drinkEntrys[index].volume
+            addDrinkVC.selectedDrink = DrinkManager.shared.drinkEntrys[index].type
             self.present(addDrinkVC, animated: true)
             completion(true)
         }

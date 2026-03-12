@@ -20,11 +20,9 @@ class AddDrinkVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.pickerView.dataSource = self
-        self.pickerView.delegate = self
-        
         setupTitle()
         setupTextField()
+        setupPicker()
         self.addDrinkEntryOutlet.applyStyle(title: "Add", normalColor: .white, highlightedColor: .gray)
         self.cancelDrinkEntryOutlet.applyStyle(title: "Cancel", normalColor: .systemPink, highlightedColor: .gray)
     }
@@ -44,6 +42,15 @@ class AddDrinkVC: UIViewController {
         textFieldOutlet.clipsToBounds = true
         textFieldOutlet.layer.borderWidth = 1
         textFieldOutlet.layer.borderColor = UIColor.gray.cgColor
+    }
+    
+    private func setupPicker() {
+        self.pickerView.dataSource = self
+        self.pickerView.delegate = self
+        
+        if let index = DrinkType.allCases.firstIndex(of: selectedDrink) {
+            pickerView.selectRow(index, inComponent: 0, animated: false)
+        }
     }
     
     @IBAction func addDrinkEntryAction(_ sender: UIButton) {
