@@ -65,6 +65,7 @@ extension HistoryVC: UITableViewDelegate {
             let addDrinkVC = AddDrinkVC(nibName: "AddDrinkVC", bundle: Bundle.main)
             addDrinkVC.presentVolume = DrinkManager.shared.drinkEntrys[index].volume
             addDrinkVC.selectedDrink = DrinkManager.shared.drinkEntrys[index].type
+            addDrinkVC.mode = .edit(index: index)
             self.present(addDrinkVC, animated: true)
             completion(true)
         }

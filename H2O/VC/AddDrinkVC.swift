@@ -17,18 +17,26 @@ class AddDrinkVC: UIViewController {
     weak var delegate: AddDrinkDelegate?
     var presentVolume: Int?
     var selectedDrink: DrinkType = .water
+    var mode: AddDrinkMode = .add
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupTitle()
         setupTextField()
         setupPicker()
-        self.addDrinkEntryOutlet.applyStyle(title: "Add", normalColor: .white, highlightedColor: .gray)
+        switch mode {
+        case .add:
+            setup(title: "Add drink")
+            self.addDrinkEntryOutlet.applyStyle(title: "Add", normalColor: .white, highlightedColor: .gray)
+        case .edit(let index):
+            print(index)
+            setup(title: "Edit drink")
+            self.addDrinkEntryOutlet.applyStyle(title: "Edit", normalColor: .white, highlightedColor: .gray)
+        }
         self.cancelDrinkEntryOutlet.applyStyle(title: "Cancel", normalColor: .systemPink, highlightedColor: .gray)
     }
     
-    private func setupTitle() {
-        self.titleLabel.text = "Add drink"
+    private func setup(title: String) {
+        self.titleLabel.text = title
         self.titleLabel.font = .systemFont(ofSize: CGFloat(34), weight: .bold)
     }
     
