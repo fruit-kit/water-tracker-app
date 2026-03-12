@@ -50,13 +50,17 @@ class HistoryVC: UIViewController {
 extension HistoryVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let index = indexPath.row
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, completion in
-            DrinkManager.shared.deleteDrinkEntry(at: index)
-            self.historyTableView.reloadData()
+        let deleteContextualAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, completion in
+            let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
+                let index = indexPath.row
+                DrinkManager.shared.deleteDrinkEntry(at: index)
+                self.historyTableView.reloadData()
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            self.alertConfirmation(title: "Delete this drink entry?", message: "This action will remove the entry and cannot be undone.", actions: [cancelAction, deleteAction])
             completion(true)
         }
-        return UISwipeActionsConfiguration(actions: [deleteAction])
+        return UISwipeActionsConfiguration(actions: [deleteContextualAction])
     }
     
 }
