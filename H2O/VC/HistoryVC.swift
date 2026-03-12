@@ -61,6 +61,8 @@ extension HistoryVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editContextualAction = UIContextualAction(style: .normal, title: "Edit") { _ , _, completion in
+            let addDrinkVC = AddDrinkVC(nibName: "AddDrinkVC", bundle: Bundle.main)
+            self.present(addDrinkVC, animated: true)
             completion(true)
         }
         let deleteContextualAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, completion in
