@@ -60,6 +60,9 @@ class HistoryVC: UIViewController {
 extension HistoryVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let editContextualAction = UIContextualAction(style: .normal, title: "Edit") { _ , _, completion in
+            completion(true)
+        }
         let deleteContextualAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, completion in
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
                 let index = indexPath.row
@@ -70,7 +73,7 @@ extension HistoryVC: UITableViewDelegate {
             self.alertConfirmation(title: "Delete this drink entry?", message: "This action will remove the entry and cannot be undone.", actions: [cancelAction, deleteAction])
             completion(true)
         }
-        return UISwipeActionsConfiguration(actions: [deleteContextualAction])
+        return UISwipeActionsConfiguration(actions: [deleteContextualAction, editContextualAction])
     }
     
 }
