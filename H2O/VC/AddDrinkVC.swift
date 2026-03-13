@@ -8,17 +8,24 @@
 import UIKit
 
 class AddDrinkVC: UIViewController {
+    
+    // MARK: - Outlets
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var textFieldOutlet: UITextField!
     @IBOutlet weak var pickerView: UIPickerView!
     @IBOutlet weak var addDrinkEntryOutlet: UIButton!
     @IBOutlet weak var cancelDrinkEntryOutlet: UIButton!
     
+    // MARK: - Properties
+    
     weak var delegate: AddDrinkDelegate?
     weak var delegateHistoryVC: EditDrinkDelegate?
     var presentVolume: Int?
     var selectedDrink: DrinkType = .water
     var mode: AddDrinkMode = .add
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +41,8 @@ class AddDrinkVC: UIViewController {
         }
         self.cancelDrinkEntryOutlet.applyStyle(title: "Cancel", normalColor: .systemPink, highlightedColor: .gray)
     }
+    
+    // MARK: - Methods
     
     private func setup(title: String) {
         self.titleLabel.text = title
@@ -61,6 +70,8 @@ class AddDrinkVC: UIViewController {
         }
     }
     
+    // MARK: - Actions
+    
     @IBAction func addDrinkEntryAction(_ sender: UIButton) {
         guard let text = textFieldOutlet.text,
               let ml = Int(text),
@@ -86,6 +97,8 @@ class AddDrinkVC: UIViewController {
     
 }
 
+// MARK: - Protocols
+
 protocol AddDrinkDelegate: AnyObject {
     func didAddDrink()
 }
@@ -93,6 +106,8 @@ protocol AddDrinkDelegate: AnyObject {
 protocol EditDrinkDelegate: AnyObject {
     func didEditDrink()
 }
+
+// MARK: - Extensions
 
 extension AddDrinkVC: UIPickerViewDataSource {
     
