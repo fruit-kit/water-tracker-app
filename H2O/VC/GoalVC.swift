@@ -8,14 +8,21 @@
 import UIKit
 
 class GoalVC: UIViewController {
+    
+    // MARK: - Outlets
+    
     @IBOutlet weak var goalLabel: UILabel!
     @IBOutlet weak var setGoalOutlet: UIButton!
     @IBOutlet weak var resetToDefaultOutlet: UIButton!
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fillGoalVC()
     }
+    
+    // MARK: - Methods
     
     private func fillGoalVC() {
         self.goalLabel.text = "Current goal is \(DrinkManager.shared.currentGoal)ml"
@@ -28,6 +35,8 @@ class GoalVC: UIViewController {
         self.setGoalOutlet.applyStyle(title: "Set goal", normalColor: .white, highlightedColor: .gray)
         self.resetToDefaultOutlet.applyStyle(title: "Reset to default", normalColor: .systemPink, highlightedColor: .gray)
     }
+    
+    // MARK: - Actions
     
     @IBAction func setGoalButton(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Set goal", message: nil, preferredStyle: .alert)
