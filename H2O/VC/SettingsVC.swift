@@ -9,21 +9,30 @@ import UIKit
 
 class SettingsVC: UIViewController {
 
+    @IBOutlet weak var notificationSwitcher: UISwitch!
+    @IBOutlet weak var notificationOutlet: UILabel!
+    @IBOutlet weak var notificationBorder: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupNavigation()
+        setupNotificationSetting()
+    }
 
-        // Do any additional setup after loading the view.
+    private func setupNavigation() {
+        navigationItem.title = "Settings"
+        navigationController?.title = "Settings"
+        navigationController?.navigationBar.prefersLargeTitles = true
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupNotificationSetting() {
+        notificationBorder.layer.borderWidth = 1
+        notificationBorder.layer.borderColor = UIColor.white.cgColor
+        notificationBorder.layer.cornerRadius = 25
     }
-    */
-
+    
+    @IBAction func notificationSwitchAction(_ sender: UISwitch) {
+        
+    }
+    
 }

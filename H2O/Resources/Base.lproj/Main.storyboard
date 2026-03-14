@@ -440,14 +440,72 @@
                     <view key="view" contentMode="scaleToFill" id="Mcx-KU-yvw">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vNs-3S-Vy6">
+                                <rect key="frame" x="0.0" y="172" width="393" height="82"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bQl-Np-mrj">
+                                        <rect key="frame" x="0.0" y="0.0" width="393" height="82"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xtt-wT-Eon">
+                                                <rect key="frame" x="16" y="8" width="361" height="66"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eso-Vb-yVv">
+                                                        <rect key="frame" x="16" y="8" width="252" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="r2K-Jk-Ann"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                        <nil key="textColor"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vTN-2L-qdI">
+                                                        <rect key="frame" x="284" y="19" width="63" height="28"/>
+                                                        <connections>
+                                                            <action selector="notificationSwitchAction:" destination="XjL-KW-N0M" eventType="valueChanged" id="rfV-0z-dLj"/>
+                                                        </connections>
+                                                    </switch>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="eso-Vb-yVv" firstAttribute="leading" secondItem="Xtt-wT-Eon" secondAttribute="leading" constant="16" id="HXe-Ep-g6x"/>
+                                                    <constraint firstItem="vTN-2L-qdI" firstAttribute="leading" secondItem="eso-Vb-yVv" secondAttribute="trailing" constant="16" id="Kv9-nY-f0T"/>
+                                                    <constraint firstAttribute="trailing" secondItem="vTN-2L-qdI" secondAttribute="trailing" constant="16" id="T2b-M2-VVe"/>
+                                                    <constraint firstItem="vTN-2L-qdI" firstAttribute="centerY" secondItem="Xtt-wT-Eon" secondAttribute="centerY" id="caA-OD-EF2"/>
+                                                    <constraint firstItem="eso-Vb-yVv" firstAttribute="top" secondItem="Xtt-wT-Eon" secondAttribute="top" constant="8" id="qFw-OA-TJk"/>
+                                                    <constraint firstAttribute="bottom" secondItem="eso-Vb-yVv" secondAttribute="bottom" constant="8" id="vlu-3V-Znu"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="Xtt-wT-Eon" secondAttribute="trailing" constant="16" id="1Xi-4X-exl"/>
+                                            <constraint firstAttribute="bottom" secondItem="Xtt-wT-Eon" secondAttribute="bottom" constant="8" id="Aze-Hn-eYS"/>
+                                            <constraint firstItem="Xtt-wT-Eon" firstAttribute="top" secondItem="bQl-Np-mrj" secondAttribute="top" constant="8" id="kZB-XT-odX"/>
+                                            <constraint firstItem="Xtt-wT-Eon" firstAttribute="leading" secondItem="bQl-Np-mrj" secondAttribute="leading" constant="16" id="sJt-mf-3v6"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                            </stackView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="GVB-Ri-ONs"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="GVB-Ri-ONs" firstAttribute="trailing" secondItem="vNs-3S-Vy6" secondAttribute="trailing" id="I9r-nG-kQb"/>
+                            <constraint firstItem="vNs-3S-Vy6" firstAttribute="leading" secondItem="GVB-Ri-ONs" secondAttribute="leading" id="Kim-Ux-Pfc"/>
+                            <constraint firstItem="vNs-3S-Vy6" firstAttribute="top" secondItem="GVB-Ri-ONs" secondAttribute="top" id="di4-K4-szK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Xe9-bc-Vsl"/>
+                    <connections>
+                        <outlet property="notificationBorder" destination="Xtt-wT-Eon" id="beE-8K-EhD"/>
+                        <outlet property="notificationOutlet" destination="eso-Vb-yVv" id="IK4-mp-PwF"/>
+                        <outlet property="notificationSwitcher" destination="vTN-2L-qdI" id="QbR-ah-BlX"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YPJ-pB-uw3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="24" y="1105"/>
+            <point key="canvasLocation" x="23.664122137404579" y="1104.9295774647887"/>
         </scene>
         <!--History-->
         <scene sceneID="v0d-KX-ADD">
