@@ -26,6 +26,7 @@ class HomeVC: UIViewController {
         setupNavigation()
         setupProgressLabel()
         setupButtons()
+        NotificationManager.shared.requestPermission()
     }
     
     override func viewWillAppear(_ animated: Bool) {
