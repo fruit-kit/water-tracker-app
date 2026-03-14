@@ -19,7 +19,7 @@ class AddDrinkVC: UIViewController {
     
     // MARK: - Properties
     
-    weak var delegate: AddDrinkDelegate?
+    weak var addDrinkDelegate: AddDrinkDelegate?
     weak var delegateHistoryVC: EditDrinkDelegate?
     var presentVolume: Int?
     var selectedDrink: DrinkType = .water
@@ -82,7 +82,7 @@ class AddDrinkVC: UIViewController {
         switch mode {
         case .add:
             DrinkManager.shared.addDrink(amount: ml, drink: selectedDrink)
-            delegate?.didAddDrink()
+            addDrinkDelegate?.didAddDrink()
             dismiss(animated: true)
         case .edit(let index):
             DrinkManager.shared.updateDrinkEntry(at: index, volume: ml, drink: selectedDrink)

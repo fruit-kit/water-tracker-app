@@ -62,7 +62,7 @@ class HomeVC: UIViewController {
     
     private func presentAddDrink(volume: Int?) {
         let addDrinkVC = AddDrinkVC(nibName: "AddDrinkVC", bundle: Bundle.main)
-        addDrinkVC.delegate = self
+        addDrinkVC.addDrinkDelegate = self
         
         if let sheet = addDrinkVC.sheetPresentationController {
             sheet.detents = [.medium(), .large()]
