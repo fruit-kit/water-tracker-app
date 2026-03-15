@@ -9,7 +9,11 @@ import UIKit
 
 class SettingsVC: UIViewController {
 
+    // MARK: - Outlets
+    
     @IBOutlet weak var notificationButtonOutlet: UIButton!
+    
+    // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,11 +25,15 @@ class SettingsVC: UIViewController {
         )
     }
 
+    // MARK: - Methods
+    
     private func setupNavigation() {
         navigationItem.title = "Settings"
         navigationController?.title = "Settings"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
+    
+    // MARK: - Actions
     
     @IBAction func notificationButtonAction(_ sender: UIButton) {
         let notificationsVC = NotificationsVC(nibName: "NotificationsVC", bundle: Bundle.main)
