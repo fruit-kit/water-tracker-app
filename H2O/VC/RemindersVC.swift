@@ -31,7 +31,7 @@ class RemindersVC: UIViewController {
     
     // MARK: - Actions
     
-    @IBAction func notificationSwitcherAction(_ sender: UISwitch) {
+    @IBAction func reminderSwitcherAction(_ sender: UISwitch) {
         if sender.isOn {
             NotificationManager.shared.requestPermission { isAllowed in
                 guard isAllowed else {

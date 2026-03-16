@@ -34,6 +34,9 @@
                                 </label>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="43h-or-UGV">
                                     <rect key="frame" x="316" y="19" width="63" height="28"/>
+                                    <connections>
+                                        <action selector="reminderSwitcherAction:" destination="-1" eventType="valueChanged" id="fpL-q9-6XT"/>
+                                    </connections>
                                 </switch>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

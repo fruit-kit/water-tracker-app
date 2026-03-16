@@ -9,17 +9,23 @@ import UIKit
 
 class SettingsTableVC: UITableViewController {
     
+    // MARK: - Outlets
+    
     let settings: [SettingModal] = [
         SettingModal(settingImage: UIImage(systemName: "bell.fill"), settingName: "Reminders"),
         SettingModal(settingImage: UIImage(systemName: "star.fill"), settingName: "Daily Goal")
     ]
 
+    // MARK: - Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
         let settingsTableViewCell = UINib(nibName: "SettingsTableViewCell", bundle: Bundle.main)
         tableView.register(settingsTableViewCell, forCellReuseIdentifier: "settingsTableViewCell")
     }
+    
+    // MARK: - Methods
     
     private func setupNavigation() {
             navigationItem.title = "Settings"
