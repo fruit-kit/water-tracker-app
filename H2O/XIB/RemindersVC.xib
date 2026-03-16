@@ -10,8 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NotificationsVC" customModule="H2O" customModuleProvider="target">
             <connections>
-                <outlet property="notificationLabelOutlet" destination="2TY-jn-kez" id="gzN-en-OZy"/>
-                <outlet property="notificationSwitcherOutlet" destination="43h-or-UGV" id="WnT-Q6-sbI"/>
+                <outlet property="reminderLabelOutlet" destination="2TY-jn-kez" id="AQu-pX-MBs"/>
+                <outlet property="reminderSwitcherOutlet" destination="43h-or-UGV" id="IKk-ng-3Hx"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -34,9 +34,6 @@
                                 </label>
                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="43h-or-UGV">
                                     <rect key="frame" x="316" y="19" width="63" height="28"/>
-                                    <connections>
-                                        <action selector="notificationSwitcherAction:" destination="-1" eventType="valueChanged" id="0fz-Dr-b6k"/>
-                                    </connections>
                                 </switch>
                             </subviews>
                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>

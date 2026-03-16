@@ -7,25 +7,25 @@
 
 import UIKit
 
-class NotificationsVC: UIViewController {
+class RemindersVC: UIViewController {
     
     // MARK: - Outlets
     
-    @IBOutlet weak var notificationSwitcherOutlet: UISwitch!
-    @IBOutlet weak var notificationLabelOutlet: UILabel!
+    @IBOutlet weak var reminderLabelOutlet: UILabel!
+    @IBOutlet weak var reminderSwitcherOutlet: UISwitch!
     
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = "Notifications"
-        notificationLabelOutlet.text = "Water reminders"
+        navigationItem.title = "Reminders"
+        reminderLabelOutlet.text = "Water reminders"
         
         if UserDefaults.standard.bool(forKey: "waterReminder"),
            UserDefaults.standard.bool(forKey: "requestPermission") {
-            notificationSwitcherOutlet.isOn = true
+            reminderSwitcherOutlet.isOn = true
         } else {
-            notificationSwitcherOutlet.isOn = false
+            reminderSwitcherOutlet.isOn = false
         }
     }
     
@@ -36,7 +36,7 @@ class NotificationsVC: UIViewController {
             NotificationManager.shared.requestPermission { isAllowed in
                 guard isAllowed else {
                     DispatchQueue.main.async {
-                        self.notificationSwitcherOutlet.isOn = false
+                        self.reminderSwitcherOutlet.isOn = false
                     }
                     UserDefaults.standard.set(false, forKey: "waterReminder")
                     return

@@ -51,7 +51,7 @@ class SettingsTableVC: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         switch indexPath.row {
         case 0:
-            let notificationsVC = NotificationsVC(nibName: "NotificationsVC", bundle: Bundle.main)
+            let notificationsVC = RemindersVC(nibName: "RemindersVC", bundle: Bundle.main)
             navigationController?.pushViewController(notificationsVC, animated: true)
         case 1:
             let goalVC = DailyGoalVC(nibName: "DailyGoalVC", bundle: Bundle.main)
