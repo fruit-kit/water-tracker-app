@@ -57,8 +57,8 @@ class DrinkManager {
     
     func addDrink(amount: Int, drink: DrinkType) {
         lastAdd = amount
-        currentVolume += lastAdd
         self.drinkEntrys.insert(DrinkEntry(date: Date(), volume: lastAdd, type: drink), at: 0)
+        recalculateCurrentVolume()
         saveHistory()
     }
     
@@ -68,7 +68,7 @@ class DrinkManager {
             return
         }
         drinkEntrys.remove(at: 0)
-        currentVolume -= lastAdd
+        recalculateCurrentVolume()
         lastAdd = 0
         saveHistory()
     }
@@ -118,20 +118,20 @@ class DrinkManager {
     }
     
     func clearAllHistory() {
-        self.currentVolume = 0
         self.lastAdd = 0
         self.drinkEntrys.removeAll()
+        recalculateCurrentVolume()
         self.saveHistory()
     }
     
     // MARK: Day actions
     
     func resetDay() {
-        self.currentVolume = 0
         self.lastAdd = 0
         drinkEntrys.removeAll {
             Calendar.current.isDateInToday($0.date)
         }
+        recalculateCurrentVolume()
         self.saveHistory()
     }
     
