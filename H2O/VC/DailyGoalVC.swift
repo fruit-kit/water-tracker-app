@@ -40,17 +40,17 @@ class DailyGoalVC: UIViewController {
     }
     
     private func updateGoalLabel() {
-        self.goalLabel.text = "Current goal is \(DrinkManager.shared.currentGoal)ml"
+        self.goalLabel.text = "Current goal is \(DrinkManager.shared.currentGoal) ml"
     }
     
     // MARK: - Actions
     
     @IBAction func setGoalAction(_ sender: UIButton) {
-        let alertController = UIAlertController(title: "Set goal", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: "Daily Goal", message: "Enter amount in ml", preferredStyle: .alert)
         
         let setAction = UIAlertAction(title: "Set", style: .default) { _ in
-            let customeGoal = alertController.textFields?.first?.text ?? ""
-            if let customeGoal = Int(customeGoal),
+            let text = alertController.textFields?.first?.text ?? ""
+            if let customeGoal = Int(text),
                customeGoal > 0 {
                 UserDefaults.standard.set(customeGoal, forKey: UserDefaultsKeys.goal.rawValue)
                 self.updateGoalLabel()
@@ -79,7 +79,7 @@ class DailyGoalVC: UIViewController {
             self.updateGoalLabel()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertConfirmation(title: "Reset goal to default?", message: "This will reset the goal to 2000ml.", actions: [resetAction, cancelAction])
+        alertConfirmation(title: "Reset to Default?", message: "Daily goal will be set to 2000 ml.", actions: [resetAction, cancelAction])
     }
     
 }
