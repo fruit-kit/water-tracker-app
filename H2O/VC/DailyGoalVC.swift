@@ -8,7 +8,7 @@
 import UIKit
 
 class DailyGoalVC: UIViewController {
-
+    
     // MARK: - Outlets
     
     @IBOutlet weak var goalLabel: UILabel!
@@ -25,8 +25,7 @@ class DailyGoalVC: UIViewController {
     // MARK: - Methods
     
     private func fillGoalVC() {
-        self.goalLabel.text = "Current goal is \(DrinkManager.shared.currentGoal)ml"
-        self.goalLabel.font = .systemFont(ofSize: CGFloat(23), weight: .bold)
+        setupGoalLabel()
         
         navigationItem.title = "Daily Goal"
         navigationController?.navigationBar.prefersLargeTitles = true
@@ -35,35 +34,49 @@ class DailyGoalVC: UIViewController {
         self.resetToDefaultOutlet.applyStyle(title: "Reset to default", normalColor: .systemPink, highlightedColor: .gray)
     }
     
+    private func setupGoalLabel() {
+        updateGoalLabel()
+        self.goalLabel.font = .systemFont(ofSize: CGFloat(23), weight: .bold)
+    }
+    
+    private func updateGoalLabel() {
+        self.goalLabel.text = "Current goal is \(DrinkManager.shared.currentGoal)ml"
+    }
+    
     // MARK: - Actions
     
     @IBAction func setGoalAction(_ sender: UIButton) {
         let alertController = UIAlertController(title: "Set goal", message: nil, preferredStyle: .alert)
-        let actionButton = UIAlertAction(title: "Set", style: .default) { _ in
+        
+        let setAction = UIAlertAction(title: "Set", style: .default) { _ in
             let customeGoal = alertController.textFields?.first?.text ?? ""
             if let customeGoal = Int(customeGoal),
                customeGoal > 0 {
                 UserDefaults.standard.set(customeGoal, forKey: UserDefaultsKeys.goal.rawValue)
-                self.goalLabel.text = "Current goal is \(DrinkManager.shared.currentGoal)ml"
+                self.updateGoalLabel()
             } else {
                 UserDefaults.standard.set(DrinkManager.shared.defaultGoal, forKey: UserDefaultsKeys.goal.rawValue)
-                self.goalLabel.text = "Current goal is \(DrinkManager.shared.currentGoal)ml"
+                self.updateGoalLabel()
             }
         }
-        let cancelButton = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
         alertController.addTextField { textField in
             textField.keyboardType = .numberPad
             textField.placeholder = "ml"
         }
-        alertController.addAction(actionButton)
-        alertController.addAction(cancelButton)
+        
+        alertController.addAction(setAction)
+        alertController.addAction(cancelAction)
+        
         present(alertController, animated: true)
     }
     
     @IBAction func resetToDefaultAction(_ sender: UIButton) {
         let resetAction = UIAlertAction(title: "Reset", style: .destructive) { _ in
             UserDefaults.standard.set(DrinkManager.shared.defaultGoal, forKey: UserDefaultsKeys.goal.rawValue)
-            self.goalLabel.text = "Current goal is \(UserDefaults.standard.integer(forKey: UserDefaultsKeys.goal.rawValue))ml"
+            self.updateGoalLabel()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertConfirmation(title: "Reset goal to default?", message: "This will reset the goal to 2000ml.", actions: [resetAction, cancelAction])
