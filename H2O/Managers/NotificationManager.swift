@@ -13,7 +13,7 @@ class NotificationManager {
     
     func requestPermission(completion: @escaping (Bool) -> Void) {
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { isAllow, error in
-            UserDefaults.standard.set(isAllow, forKey: "requestPermission")
+            UserDefaults.standard.set(isAllow, forKey: UserDefaultsKeys.requestPermission.rawValue)
             completion(isAllow)
         }
     }
@@ -30,7 +30,7 @@ class NotificationManager {
         )
         
         let request = UNNotificationRequest(
-            identifier: "waterReminder",
+            identifier: UserDefaultsKeys.waterReminder.rawValue,
             content: content,
             trigger: trigger)
         
@@ -38,7 +38,7 @@ class NotificationManager {
     }
     
     func removeNotification() {
-        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ["waterReminder"])
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: [UserDefaultsKeys.waterReminder.rawValue])
     }
     
 }

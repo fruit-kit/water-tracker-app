@@ -291,7 +291,7 @@
                     <navigationItem key="navigationItem" title="History" id="Cnb-LI-dK2"/>
                     <connections>
                         <outlet property="clearHistoryOutlet" destination="qNb-Un-WPa" id="cf4-Mw-Qec"/>
-                        <outlet property="historyTableView" destination="qnY-Ok-ymV" id="uIH-3N-rPU"/>
+                        <outlet property="tableView" destination="qnY-Ok-ymV" id="SOd-E2-Exc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="egQ-kN-gpR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

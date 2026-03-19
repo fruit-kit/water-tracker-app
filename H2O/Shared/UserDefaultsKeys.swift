@@ -11,4 +11,6 @@ enum UserDefaultsKeys: String {
     case lastAdd
     case lastOpenDate
     case drinkEntrys
+    case requestPermission
+    case waterReminder
 }

@@ -11,7 +11,7 @@ class HistoryVC: UIViewController {
 
     // MARK: - Outlets
     
-    @IBOutlet weak var historyTableView: UITableView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var clearHistoryOutlet: UIButton!
     
     // MARK: - Lifecycle
@@ -19,11 +19,11 @@ class HistoryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        historyTableView.delegate = self
-        historyTableView.dataSource = self
+        tableView.delegate = self
+        tableView.dataSource = self
         
         let historyTableViewCell = UINib(nibName: "HistoryTableViewCell", bundle: Bundle.main)
-        historyTableView.register(historyTableViewCell, forCellReuseIdentifier: "HistoryTableViewCell")
+        tableView.register(historyTableViewCell, forCellReuseIdentifier: "HistoryTableViewCell")
         
         clearHistoryOutlet.applyStyle(title: "Clear all history", normalColor: .systemPink, highlightedColor: .gray)
     }
@@ -31,7 +31,7 @@ class HistoryVC: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         DrinkManager.shared.loadHistory()
-        historyTableView.reloadData()
+        tableView.reloadData()
     }
     
     // MARK: - Methods
@@ -47,7 +47,7 @@ class HistoryVC: UIViewController {
     @IBAction func clearHistoryAction(_ sender: UIButton) {
         let clearAction = UIAlertAction(title: "Clear", style: .destructive) { _ in
             DrinkManager.shared.clearAllHistory()
-            self.historyTableView.reloadData()
+            self.tableView.reloadData()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
         alertConfirmation(title: "Clear all history?", message: "This will remove all entries and cannot be undone.", actions: [clearAction, cancelAction])
@@ -74,7 +74,7 @@ extension HistoryVC: UITableViewDelegate {
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
                 let index = indexPath.row
                 DrinkManager.shared.deleteDrinkEntry(at: index)
-                self.historyTableView.reloadData()
+                self.tableView.reloadData()
             }
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
             self.alertConfirmation(title: "Delete this drink entry?", message: "This action will remove the entry and cannot be undone.", actions: [cancelAction, deleteAction])
@@ -115,7 +115,7 @@ extension HistoryVC: UITableViewDataSource {
 extension HistoryVC: EditDrinkDelegate {
     
     func didEditDrink() {
-        historyTableView.reloadData()
+        tableView.reloadData()
     }
     
 }
