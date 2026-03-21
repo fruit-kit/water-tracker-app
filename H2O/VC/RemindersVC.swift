@@ -22,11 +22,11 @@ class RemindersVC: UIViewController {
         super.viewDidLoad()
         navigationItem.title = "Reminders"
         frequencyLabel.text = "Remind me every"
-        datePickerOutlet.countDownDuration = UserDefaults.standard.object(forKey: "intervalReminder") as? TimeInterval ?? 10800
+        datePickerOutlet.countDownDuration = UserDefaults.standard.object(forKey: UserDefaultsKeys.intervalReminder.rawValue) as? TimeInterval ?? 10800
         reminderLabelOutlet.text = "Water reminders"
         
-        if UserDefaults.standard.bool(forKey: "waterReminder"),
-           UserDefaults.standard.bool(forKey: "requestPermission") {
+        if UserDefaults.standard.bool(forKey: UserDefaultsKeys.waterReminder.rawValue),
+           UserDefaults.standard.bool(forKey: UserDefaultsKeys.requestPermission.rawValue) {
             reminderSwitcherOutlet.isOn = true
         } else {
             reminderSwitcherOutlet.isOn = false
@@ -51,16 +51,16 @@ class RemindersVC: UIViewController {
                     DispatchQueue.main.async {
                         self.reminderSwitcherOutlet.isOn = false
                     }
-                    UserDefaults.standard.set(false, forKey: "waterReminder")
+                    UserDefaults.standard.set(false, forKey: UserDefaultsKeys.waterReminder.rawValue)
                     return
                 }
-                UserDefaults.standard.set(true, forKey: "waterReminder")
-                let interval = UserDefaults.standard.object(forKey: "intervalReminder") as? TimeInterval ?? 10800
+                UserDefaults.standard.set(true, forKey: UserDefaultsKeys.waterReminder.rawValue)
+                let interval = UserDefaults.standard.object(forKey: UserDefaultsKeys.intervalReminder.rawValue) as? TimeInterval ?? 10800
                 NotificationManager.shared.removeNotification()
                 NotificationManager.shared.sendNotification(with: interval)
             }
         } else {
-            UserDefaults.standard.set(sender.isOn, forKey: "waterReminder")
+            UserDefaults.standard.set(sender.isOn, forKey: UserDefaultsKeys.waterReminder.rawValue)
             NotificationManager.shared.removeNotification()
         }
     }
