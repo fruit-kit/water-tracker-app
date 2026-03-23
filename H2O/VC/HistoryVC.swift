@@ -61,25 +61,43 @@ extension HistoryVC: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let editContextualAction = UIContextualAction(style: .normal, title: "Edit") { _ , _, completion in
+            
             let index = indexPath.row
+            
+            let todayEntries = self.entries(for: 0)
+            let earlierEntries = self.entries(for: 1)
+            
             let addDrinkVC = AddDrinkVC(nibName: "AddDrinkVC", bundle: Bundle.main)
-            addDrinkVC.presentVolume = DrinkManager.shared.drinkEntrys[index].volume
-            addDrinkVC.selectedDrink = DrinkManager.shared.drinkEntrys[index].type
+            
+            if indexPath.section == 0 {
+                addDrinkVC.presentVolume = todayEntries[index].volume
+                addDrinkVC.selectedDrink = todayEntries[index].type
+            } else {
+                addDrinkVC.presentVolume = earlierEntries[index].volume
+                addDrinkVC.selectedDrink = earlierEntries[index].type
+            }
+            
             addDrinkVC.mode = .edit(index: index)
             addDrinkVC.delegateHistoryVC = self
             self.present(addDrinkVC, animated: true)
             completion(true)
+            
         }
+        
         let deleteContextualAction = UIContextualAction(style: .destructive, title: "Delete") { _, _, completion in
+            
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
                 let index = indexPath.row
                 DrinkManager.shared.deleteDrinkEntry(at: index)
                 self.tableView.reloadData()
             }
+            
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+            
             self.alertConfirmation(title: "Delete entry?", message: "This action can't be undone.", actions: [cancelAction, deleteAction])
             completion(true)
         }
+        
         return UISwipeActionsConfiguration(actions: [deleteContextualAction, editContextualAction])
     }
     
