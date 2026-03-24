@@ -57,7 +57,7 @@ class DrinkManager {
     
     func addDrink(amount: Int, drink: DrinkType) {
         lastAdd = amount
-        self.drinkEntrys.insert(DrinkEntry(date: Date(), volume: lastAdd, type: drink), at: 0)
+        self.drinkEntrys.insert(DrinkEntry(date: Date(), volume: lastAdd, type: drink, id: UUID()), at: 0)
         recalculateCurrentVolume()
         saveHistory()
     }
@@ -106,7 +106,7 @@ class DrinkManager {
         
         let oldEntry = drinkEntrys[index]
         
-        let updatedEntry = DrinkEntry(date: oldEntry.date, volume: volume, type: drink)
+        let updatedEntry = DrinkEntry(date: oldEntry.date, volume: volume, type: drink, id: UUID())
         
         drinkEntrys[index] = updatedEntry
         

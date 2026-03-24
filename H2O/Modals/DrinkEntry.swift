@@ -10,4 +10,5 @@ struct DrinkEntry: Codable, Equatable {
     let date: Date
     let volume: Int
     let type: DrinkType
+    let id: UUID
 }

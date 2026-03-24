@@ -68,7 +68,7 @@ extension HistoryVC: UITableViewDelegate {
             
             let addDrinkVC = AddDrinkVC(nibName: "AddDrinkVC", bundle: Bundle.main)
             
-            if let realIndex = DrinkManager.shared.drinkEntrys.firstIndex(where: { $0 == drinkEntry }) {
+            if let realIndex = DrinkManager.shared.drinkEntrys.firstIndex(where: { $0.id == drinkEntry.id }) {
                 
                 addDrinkVC.presentVolume = drinkEntry.volume
                 addDrinkVC.selectedDrink = drinkEntry.type
@@ -88,7 +88,7 @@ extension HistoryVC: UITableViewDelegate {
             
             let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { _ in
                 
-                if let realIndex = DrinkManager.shared.drinkEntrys.firstIndex(where: { $0 == drinkEntry }) {
+                if let realIndex = DrinkManager.shared.drinkEntrys.firstIndex(where: { $0.id == drinkEntry.id }) {
                     DrinkManager.shared.deleteDrinkEntry(at: realIndex)
                 }
                 
