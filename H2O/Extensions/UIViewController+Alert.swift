@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIViewController {
-    func alertConfirmation(title: String, message: String, style: UIAlertController.Style = .alert, actions: [UIAlertAction]) {
+    func showAlert(title: String, message: String, style: UIAlertController.Style = .alert, actions: [UIAlertAction]) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: style)
         actions.forEach { alert.addAction($0) }
         present(alert, animated: true)

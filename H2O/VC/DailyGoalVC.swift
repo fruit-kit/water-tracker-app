@@ -79,7 +79,7 @@ class DailyGoalVC: UIViewController {
             self.updateGoalLabel()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertConfirmation(title: "Reset to Default?", message: "Daily goal will be set to 2000 ml.", actions: [resetAction, cancelAction])
+        showAlert(title: "Reset to Default?", message: "Daily goal will be set to 2000 ml.", actions: [resetAction, cancelAction])
     }
     
 }

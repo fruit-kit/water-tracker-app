@@ -50,7 +50,7 @@ class HistoryVC: UIViewController {
             self.tableView.reloadData()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertConfirmation(title: "Clear history?", message: "This action can't be undone.", actions: [clearAction, cancelAction])
+        showAlert(title: "Clear history?", message: "This action can't be undone.", actions: [clearAction, cancelAction])
     }
 
 }
@@ -97,7 +97,7 @@ extension HistoryVC: UITableViewDelegate {
             
             let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
             
-            self.alertConfirmation(title: "Delete entry?", message: "This action can't be undone.", actions: [cancelAction, deleteAction])
+            self.showAlert(title: "Delete entry?", message: "This action can't be undone.", actions: [cancelAction, deleteAction])
             completion(true)
         }
         

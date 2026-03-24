@@ -96,7 +96,7 @@ class HomeVC: UIViewController {
             self.updateProgressLabel()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertConfirmation(title: "Undo last drink?",
+        showAlert(title: "Undo last drink?",
                           message: "This action can't be undone.",
                           actions: [undoAction, cancelAction])
     }
@@ -107,7 +107,7 @@ class HomeVC: UIViewController {
             self.updateProgressLabel()
         }
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
-        alertConfirmation(title: "Reset today's progress?", message: "This action can't be undone.", actions: [resetAction, cancelAction])
+        showAlert(title: "Reset today's progress?", message: "This action can't be undone.", actions: [resetAction, cancelAction])
     }
     
 }
