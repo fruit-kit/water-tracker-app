@@ -13,7 +13,8 @@ class SettingsTableVC: UITableViewController {
     
     let settings: [SettingModal] = [
         SettingModal(settingImage: UIImage(systemName: "bell.fill"), settingName: "Reminders"),
-        SettingModal(settingImage: UIImage(systemName: "star.fill"), settingName: "Daily Goal")
+        SettingModal(settingImage: UIImage(systemName: "star.fill"), settingName: "Daily Goal"),
+        SettingModal(settingImage: UIImage(systemName: "book.fill"), settingName: "About")
     ]
 
     // MARK: - Lifecycle
@@ -62,6 +63,9 @@ class SettingsTableVC: UITableViewController {
         case 1:
             let goalVC = DailyGoalVC(nibName: "DailyGoalVC", bundle: Bundle.main)
             navigationController?.pushViewController(goalVC, animated: true)
+        case 2:
+            let aboutVC = AboutVC(nibName: "AboutVC", bundle: Bundle.main)
+            navigationController?.pushViewController(aboutVC, animated: true)
         default:
             break
         }
