@@ -14,43 +14,63 @@ class AboutVC: UIViewController {
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var line: UIView!
     @IBOutlet weak var descriptionLabel: UILabel!
-    
     @IBOutlet weak var developerImage: UIImageView!
     @IBOutlet weak var developerLabel: UILabel!
-    
     @IBOutlet weak var githubImage: UIImageView!
     @IBOutlet weak var githubLabel: UILabel!
-    
     @IBOutlet weak var emailImage: UIImageView!
     @IBOutlet weak var emailLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         navigationItem.title = "About"
-
+        setupImageLogo()
+        setuph2oLabel()
+        setupVersionLabel()
+        setupLine()
+        setupDescriptionLabel()
+        setupDeveloperButton()
+        setupGitHubButton()
+        setupEmailButton()
+    }
+    
+    private func setupImageLogo() {
         image.image = UIImage(named: "logo")
         image.layer.borderWidth = 2
-        
+    }
+    
+    private func setuph2oLabel() {
         h2oLabel.text = "H2O Water Tracker"
         h2oLabel.font = .systemFont(ofSize: CGFloat(23), weight: .bold)
-        
+    }
+    
+    private func setupVersionLabel() {
         versionLabel.text = "Version 1.0"
         versionLabel.font = .systemFont(ofSize: CGFloat(21))
         versionLabel.textColor = .gray
-        
+    }
+    
+    private func setupLine() {
         line.backgroundColor = .separator
         line.alpha = 1
-        
+    }
+    
+    private func setupDescriptionLabel() {
         descriptionLabel.text = "Track your daily water intake and stay hydrated."
         descriptionLabel.textColor = .gray
-     
+    }
+    
+    private func setupDeveloperButton() {
         developerImage.image = UIImage(systemName: "person.fill")
         developerLabel.text = "Developer"
-        
+    }
+    
+    private func setupGitHubButton() {
         githubImage.image = UIImage(systemName: "eye.fill")
         githubLabel.text = "Source Code"
-        
+    }
+    
+    private func setupEmailButton() {
         emailImage.image = UIImage(systemName: "envelope.fill")
         emailLabel.text = "Contact Us"
     }
