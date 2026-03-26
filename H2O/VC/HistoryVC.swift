@@ -19,12 +19,8 @@ class HistoryVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        tableView.delegate = self
-        tableView.dataSource = self
-        
-        let historyTableViewCell = UINib(nibName: "HistoryTableViewCell", bundle: Bundle.main)
-        tableView.register(historyTableViewCell, forCellReuseIdentifier: "HistoryTableViewCell")
-        
+        setupTableView()
+        setupTableViewCell()
         clearHistoryOutlet.applyStyle(title: "Clear all history", normalColor: .systemPink, highlightedColor: .gray)
     }
     
@@ -40,6 +36,16 @@ class HistoryVC: UIViewController {
         navigationItem.title = "History"
         navigationController?.title = "History"
         navigationController?.navigationBar.prefersLargeTitles = true
+    }
+    
+    private func setupTableView() {
+        tableView.delegate = self
+        tableView.dataSource = self
+    }
+    
+    private func setupTableViewCell() {
+        let historyTableViewCell = UINib(nibName: "HistoryTableViewCell", bundle: Bundle.main)
+        tableView.register(historyTableViewCell, forCellReuseIdentifier: "HistoryTableViewCell")
     }
     
     // MARK: - Actions
