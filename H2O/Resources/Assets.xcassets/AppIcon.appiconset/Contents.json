@@ -1,7 +1,7 @@
 {
   "images" : [
     {
-      "filename" : "logo.png",
+      "filename" : "logo-without-bg.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
