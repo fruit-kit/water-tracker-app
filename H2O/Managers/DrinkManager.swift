@@ -194,10 +194,23 @@ class DrinkManager {
     
     func resetDay() {
         self.lastAdd = 0
-        drinkEntrys.removeAll {
-            Calendar.current.isDateInToday($0.date)
+        let request = NSFetchRequest<DrinkEntity>(entityName: "DrinkEntity")
+    
+        do {
+            let result = try context.fetch(request)
+            for entity in result {
+                if let date = entity.date,
+                   Calendar.current.isDateInToday(date) {
+                    context.delete(entity)
+                }
+            }
+            try context.save()
+            loadHistory()
+            recalculateCurrentVolume()
         }
-        recalculateCurrentVolume()
+        catch {
+            print("Reset day error: ", error)
+        }
     }
     
     // MARK: Date logick
