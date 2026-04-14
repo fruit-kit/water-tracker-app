@@ -161,16 +161,25 @@ class DrinkManager {
             return
         }
         
-        let oldEntry = drinkEntrys[index]
+        let id = drinkEntrys[index].id
         
-        let updatedEntry = DrinkEntry(date: oldEntry.date, volume: volume, type: drink, id: UUID())
+        let request = NSFetchRequest<DrinkEntity>(entityName: "DrinkEntity")
+        request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
         
-        drinkEntrys[index] = updatedEntry
-        
-        if index == 0, Calendar.current.isDateInToday(updatedEntry.date) { lastAdd = updatedEntry.volume
+        do {
+            let result = try context.fetch(request)
+            guard let entity = result.first else { return }
+            
+            entity.volume = Int32(volume)
+            entity.type = drink.rawValue
+            
+            try context.save()
+            loadHistory()
+            recalculateCurrentVolume()
         }
-        
-        recalculateCurrentVolume()
+        catch {
+            print("Update drink entry error: ", error)
+        }
     }
     
     func clearAllHistory() {
