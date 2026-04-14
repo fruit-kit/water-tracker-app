@@ -157,6 +157,7 @@ class DrinkManager {
     }
     
     func updateDrinkEntry(at index: Int, volume: Int, drink: DrinkType) {
+        
         guard drinkEntrys.indices.contains(index) else {
             return
         }
@@ -174,8 +175,11 @@ class DrinkManager {
             entity.type = drink.rawValue
             
             try context.save()
+            if let date = entity.date,
+               Calendar.current.isDateInToday(date) {
+                recalculateCurrentVolume()
+            }
             loadHistory()
-            recalculateCurrentVolume()
         }
         catch {
             print("Update drink entry error: ", error)
